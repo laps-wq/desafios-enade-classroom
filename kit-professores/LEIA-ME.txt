@@ -1,0 +1,130 @@
+DESAFIOS NO GOOGLE CLASSROOM — KIT PARA PROFESSORES
+CESAR School · Laura Pacífico · outubro de 2026
+=====================================================================
+
+O QUE TEM NESTE KIT
+
+  Modelo_Envio_Questoes.xlsx
+      Para mandar questões novas ou corrigidas para os desafios da
+      TC2/TC3. As questões atuais não estão neste arquivo, porque têm
+      gabarito; para revisá-las, peça à Laura a versão com o banco.
+
+  Planilha_Modelo_Desafios.xlsx
+      Para usar a mesma automação em uma disciplina sua.
+
+  Codigo.gs e appsscript.json
+      O script que faz a publicação automática (vai junto com a
+      planilha-modelo).
+
+QUERO SÓ MANDAR QUESTÕES PARA A TC2/TC3
+---------------------------------------
+Abra Modelo_Envio_Questoes.xlsx e siga a aba "Como preencher". Em resumo:
+ache o ID do desafio da sua aula na aba Calendário e escreva as suas
+questões na aba Minhas questões. Para revisar as questões que já existem,
+peça à Laura a versão do arquivo com o banco (ela tem gabarito e não é
+pública). Devolva o arquivo para a Laura, de preferência até uma semana
+antes da sua aula.
+
+QUERO USAR NA MINHA DISCIPLINA
+------------------------------
+O que a automação faz: você escreve as questões e as datas numa planilha
+do Google. O script cria um Google Forms em modo teste (correção
+automática e comentário em cada questão), agenda a atividade no
+Classroom e, no prazo, fecha o formulário, lança as notas como
+rascunho e publica o gabarito comentado.
+
+Instalação (uma vez por planilha, uns 10 minutos). Use a conta
+@cesar.school que é professora da turma no Classroom.
+
+  1. No Google Drive: Novo > Upload de arquivo >
+     Planilha_Modelo_Desafios.xlsx. Abra e use Arquivo > Salvar como
+     Planilhas Google. Trabalhe só nessa cópia.
+  2. Na planilha Google: Extensões > Apps Script. Apague o conteúdo de
+     Código.gs e cole todo o conteúdo do arquivo Codigo.gs.
+  3. Engrenagem (Configurações do projeto) > marque "Mostrar arquivo de
+     manifesto appsscript.json no editor". Volte ao editor, abra
+     appsscript.json, apague tudo e cole o conteúdo do arquivo
+     appsscript.json. Salve (Ctrl+S).
+  4. Recarregue a planilha. Aparece o menu "Desafios ENADE". Rode
+     "1) Verificar configuração" e autorize. Se aparecer o aviso de
+     "app não verificado", clique em Avançado > Acessar: o app é o seu
+     próprio script.
+  5. Rode "2) Listar minhas turmas do Classroom". Na aba Turmas, copie o
+     ID da turma e cole em Config > ID_TURMAS. Mais de uma turma: separe
+     os IDs por vírgula.
+  6. Confira na aba Config: DOMINIO_ALUNOS (domínio do e-mail dos
+     alunos) e TEXTO_EXTRA_NA_ATIVIDADE (texto que vai em toda
+     atividade; ajuste para a sua disciplina).
+  7. Monte os desafios: aba Desafios (uma linha por desafio, datas no
+     formato dd/mm/aaaa hh:mm) e aba Questoes (uma linha por questão,
+     com o mesmo ID na coluna Desafio). A linha EX01 é um exemplo.
+  8. Clique na linha de um desafio e rode "3) Pré-visualizar". Nada vai
+     para o Classroom. Abra "Ver como aluno" e peça a um aluno para
+     testar o link.
+  9. Mude o Status dos desafios revisados de RASCUNHO para PRONTO.
+ 10. Menu > "Ligar piloto automático". A cada 15 minutos o script agenda
+     os PRONTOS e encerra os vencidos.
+
+Não acha o menu Extensões? O arquivo ainda está em .xlsx (faça o passo 1
+completo), os menus estão recolhidos (Ctrl+Shift+F) ou você está no
+celular (use o navegador do computador).
+
+STATUS DE CADA DESAFIO
+
+  RASCUNHO   em revisão; o script ignora
+  PRONTO     será agendado na próxima rodada
+  AGENDADO   programado no Classroom; sai sozinho na hora marcada
+  PUBLICADO  visível para a turma até o prazo
+  ENCERRADO  formulário fechado, notas lançadas, gabarito publicado
+  ERRO       a coluna "Mensagens do robô" explica; corrija e volte para
+             PRONTO. Você também recebe um e-mail.
+
+NO DIA A DIA
+
+  - Notas entram como rascunho: no Classroom, abra a atividade e clique
+    em Devolver. Para lançar direto, mude NOTAS_NO_CLASSROOM para
+    ATRIBUIDA.
+  - Desafio AGENDADO (ainda não saiu) com erro: corrija a questão,
+    selecione a linha e use "Refazer o desafio selecionado".
+  - Desafio já publicado com erro: edite direto no formulário pelo
+    "Link de edição". As respostas enviadas são mantidas.
+  - Imagem numa questão: link de um arquivo do seu Drive na coluna
+    Imagem.
+
+CUIDADOS
+
+  - O aluno precisa responder com o e-mail institucional: é por ele que
+    a nota chega ao Classroom.
+  - Por padrão, o Forms mostra as respostas certas logo após o envio.
+    Para segurar até o prazo: crie um Forms vazio, ative o modo teste,
+    desmarque "Respostas corretas" em Configurações > Testes e cole o
+    link dele em Config > FORM_MODELO_ID.
+  - O script roda na conta de quem instalou. O que está agendado sai
+    mesmo com o computador desligado. Se você desligar o piloto
+    automático, os formulários não fecham sozinhos e as notas não são
+    lançadas: use o menu "Encerrar desafios vencidos e lançar notas".
+  - O Classroom não importa sozinho a nota de formulários anexados por
+    script; é por isso que o próprio script calcula e lança as notas.
+
+PROBLEMAS COMUNS
+
+  "Classroom is not defined"
+      O appsscript.json não foi colado (passo 3). Outra opção: no editor,
+      Serviços + > Google Classroom API > Adicionar; repita com Drive API.
+  "Requested entity was not found" ao verificar a turma
+      O ID em ID_TURMAS está errado ou a turma não é sua. Use o menu
+      "Listar minhas turmas".
+  "The caller does not have permission" ou "ProjectPermissionDenied"
+      A administração do Google Workspace pode ter bloqueado scripts no
+      Classroom. Fale com a TI.
+  Aluno não consegue abrir o formulário
+      Confira DOMINIO_ALUNOS. Se os alunos usam outro domínio, mude
+      RESPONDENTES para ALUNOS e use "Refazer" nos desafios que ainda
+      não saíram.
+  Horários deslocados em 3 horas
+      Rode "1) Verificar configuração", que ajusta o fuso da planilha
+      para São Paulo.
+  Não sei o que aconteceu
+      A aba Log registra cada ação do script.
+
+Dúvidas: Laura Pacífico.

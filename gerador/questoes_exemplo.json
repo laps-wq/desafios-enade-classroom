@@ -1,0 +1,35 @@
+[
+ {
+  "desafio": "EX01",
+  "n": 1,
+  "area": "Sistemas Digitais",
+  "enunciado": "Um sensor envia leituras em binário para um microcontrolador. Uma das leituras recebidas foi 101101.\n\nO valor dessa leitura em decimal é",
+  "alternativas": ["41.", "45.", "54.", "90.", "101."],
+  "correta": "B",
+  "comentario": "Cada posição vale uma potência de 2, da direita para a esquerda: 1·32 + 0·16 + 1·8 + 1·4 + 0·2 + 1·1 = 45. 54 é o resultado de ler os bits na ordem invertida; 101 é ler o número como se fosse decimal."
+ },
+ {
+  "desafio": "EX01",
+  "n": 2,
+  "area": "Estruturas de Dados",
+  "enunciado": "Analise as afirmações a seguir sobre pilhas e filas.\n\nI. Em uma fila, o primeiro elemento inserido é o primeiro a ser removido (FIFO).\nII. Em uma pilha, o último elemento inserido é o primeiro a ser removido (LIFO).\nIII. Uma pilha é a estrutura adequada para a fila de impressão de uma impressora compartilhada, em que os pedidos devem ser atendidos por ordem de chegada.\n\nÉ correto o que se afirma em",
+  "alternativas": ["I, apenas.", "III, apenas.", "I e II, apenas.", "II e III, apenas.", "I, II e III."],
+  "correta": "C",
+  "comentario": "I e II são as definições de fila e pilha. III é falsa: atender por ordem de chegada é o comportamento de uma fila; com uma pilha, o último pedido enviado seria impresso primeiro."
+ },
+ {
+  "desafio": "EX01",
+  "n": 3,
+  "area": "Redes e Segurança",
+  "enunciado": "Analise as asserções a seguir.\n\nI. Em uma conexão HTTPS, o conteúdo trafega cifrado entre o navegador e o servidor.\n\nPORQUE\n\nII. O HTTPS usa o protocolo TLS para estabelecer uma sessão com criptografia entre o cliente e o servidor.\n\nA respeito dessas asserções, assinale a opção correta.",
+  "alternativas": [
+   "As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I.",
+   "As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I.",
+   "A asserção I é uma proposição verdadeira, e a II é uma proposição falsa.",
+   "A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.",
+   "As asserções I e II são proposições falsas."
+  ],
+  "correta": "A",
+  "comentario": "HTTPS é HTTP sobre TLS: o TLS negocia as chaves e cifra o tráfego, e é por isso que o conteúdo trafega cifrado. A II explica a I. Este é o formato de asserção-razão do ENADE, que sempre usa estas cinco alternativas."
+ }
+]
