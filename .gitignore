@@ -1,0 +1,10 @@
+# Banco de questões com gabarito: fica só no computador da professora
+gerador/questoes.json
+planilhas/
+questoes/
+
+# Gerados
+testes/planilha.json
+__pycache__/
+*.pyc
+.DS_Store
