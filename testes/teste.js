@@ -140,7 +140,7 @@ const ScriptApp = {
 };
 const EMAILS = [];
 const MailApp = { sendEmail: (to, s, b) => EMAILS.push({ to, s, b }) };
-const Session = { getEffectiveUser: () => ({ getEmail: () => 'laps@cesar.school' }) };
+const Session = { getEffectiveUser: () => ({ getEmail: () => 'professora@exemplo.com' }) };
 const HtmlService = { createHtmlOutput: html => ({ html, setWidth() { return this; }, setHeight() { return this; } }) };
 const UrlFetchApp = { fetch: () => ({ getBlob: () => 'BLOBURL' }) };
 
